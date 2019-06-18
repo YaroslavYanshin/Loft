@@ -8,21 +8,30 @@ using Loft.Models;
 using DataLayer;
 using DataLayer.Entityes;
 using Microsoft.EntityFrameworkCore;
+using BuissnesLayer.Interfaces;
+using BuissnesLayer;
 
 namespace Loft.Controllers
 {
     public class HomeController : Controller
     {
-        private EFDBContext _context;
+        //private EFDBContext _context;
+        //private IDirectorysRepository _dirRep;
+        private DataManager _dataManager;
 
-        public HomeController (EFDBContext context)
+        public HomeController (/*EFDBContext context, IDirectorysRepository dirRep,*/ DataManager dataManager)
         {
-            _context = context;
+            //_context = context;
+            //dirRep = _dirRep;
+            _dataManager = dataManager;
         }
 
         public IActionResult Index()
         {
-            List<Directory> _dirs = _context.Directory.Include(x=>x.Materials).ToList();
+            List<Directory> _dirs = _dataManager.Directorys.GetAllDirectorys(true).ToList();
+           // List<Directory> _dirs = _dirRep.GetAllDirectorys().ToList();
+           // List<Directory> _dirs = _context.Directory.Include(x=>x.Materials).ToList();
+
             return View(_dirs);
         }
 

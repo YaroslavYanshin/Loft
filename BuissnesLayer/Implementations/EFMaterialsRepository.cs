@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BuissnesLayer.Implementations
 {
-    class EFMaterialsRepository : IMaterialsRepository
+    public class EFMaterialsRepository : IMaterialsRepository
     {
         private EFDBContext context;
         public EFMaterialsRepository(EFDBContext context)
