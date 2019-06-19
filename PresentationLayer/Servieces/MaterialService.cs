@@ -37,7 +37,7 @@ namespace PresentationLayer.Servieces
             var _editModel = new MaterialEditModel()
             {
                 Id = _dbModel.Id = _dbModel.Id,
-                Directoryid = _dbModel.DirectoryId,
+                DirectoryId = _dbModel.DirectoryId,
                 Title = _dbModel.Title,
                 Html = _dbModel.Html
             };

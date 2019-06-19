@@ -10,6 +10,7 @@ using DataLayer.Entityes;
 using Microsoft.EntityFrameworkCore;
 using BuissnesLayer.Interfaces;
 using BuissnesLayer;
+using PresentationLayer;
 
 namespace Loft.Controllers
 {
@@ -18,12 +19,14 @@ namespace Loft.Controllers
         //private EFDBContext _context;
         //private IDirectorysRepository _dirRep;
         private DataManager _dataManager;
+        private ServicesManager _servicesmanager;
 
         public HomeController (/*EFDBContext context, IDirectorysRepository dirRep,*/ DataManager dataManager)
         {
             //_context = context;
             //dirRep = _dirRep;
             _dataManager = dataManager;
+            _servicesmanager = new ServicesManager(_dataManager);
         }
 
         public IActionResult Index()
