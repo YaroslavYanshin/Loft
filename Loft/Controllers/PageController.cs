@@ -6,7 +6,7 @@ using BuissnesLayer;
 using PresentationLayer;
 using Microsoft.AspNetCore.Mvc;
 using PresentationLayer.Models;
-using static DataLayer.Enyms.PageEnums;
+using static DataLayer.Enums.PageEnums;
 
 namespace Loft.Controllers
 {

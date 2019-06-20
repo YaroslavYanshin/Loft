@@ -37,7 +37,7 @@ namespace PresentationLayer.Servieces
             var _editModel = new MaterialEditModel()
             {
                 Id = _dbModel.Id = _dbModel.Id,
-                DirectoryId = _dbModel.DirectoryId,
+                Directoryid = _dbModel.DirectoryId,
                 Title = _dbModel.Title,
                 Html = _dbModel.Html
             };
@@ -57,13 +57,13 @@ namespace PresentationLayer.Servieces
             }
             material.Title = editModel.Title;
             material.Html = editModel.Html;
-            material.DirectoryId = editModel.DirectoryId;
+            material.DirectoryId = editModel.Directoryid;
             dataManager.Materials.SaveMaterial(material);
             return MaterialDBModelToView(material.Id);
         }
         public MaterialEditModel CreateNewMaterialEditModel(int directoryId)
         {
-            return new MaterialEditModel() { DirectoryId = directoryId };
+            return new MaterialEditModel() { Directoryid = directoryId };
         }
     }
 }

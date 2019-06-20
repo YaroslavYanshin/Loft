@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using BuissnesLayer.Interfaces;
 using BuissnesLayer;
 using PresentationLayer;
+using PresentationLayer.Models;
 
 namespace Loft.Controllers
 {
@@ -18,23 +19,23 @@ namespace Loft.Controllers
     {
         //private EFDBContext _context;
         //private IDirectorysRepository _dirRep;
-        private DataManager _dataManager;
+        private DataManager _datamanager;
         private ServicesManager _servicesmanager;
 
         public HomeController (/*EFDBContext context, IDirectorysRepository dirRep,*/ DataManager dataManager)
         {
             //_context = context;
             //dirRep = _dirRep;
-            _dataManager = dataManager;
-            _servicesmanager = new ServicesManager(_dataManager);
+            _datamanager = dataManager;
+            _servicesmanager = new ServicesManager(_datamanager);
         }
 
         public IActionResult Index()
         {
-            List<Directory> _dirs = _dataManager.Directorys.GetAllDirectorys(true).ToList();
-           // List<Directory> _dirs = _dirRep.GetAllDirectorys().ToList();
-           // List<Directory> _dirs = _context.Directory.Include(x=>x.Materials).ToList();
-
+            //List<Directory> _dirs = _datamanager.Directorys.GetAllDirectorys(true).ToList();
+            // List<Directory> _dirs = _dirRep.GetAllDirectorys().ToList();
+            // List<Directory> _dirs = _context.Directory.Include(x=>x.Materials).ToList();
+            List<DirectoryViewModel> _dirs = _servicesmanager.Directorys.GetDirectoryesList();
             return View(_dirs);
         }
 

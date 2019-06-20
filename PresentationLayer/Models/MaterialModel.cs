@@ -16,6 +16,6 @@ namespace PresentationLayer.Models
     public class MaterialEditModel : PageEditModel
     {
        [Required]
-        public int DirectoryId { get; set; }
+        public int Directoryid { get; set; }
     }
 }
