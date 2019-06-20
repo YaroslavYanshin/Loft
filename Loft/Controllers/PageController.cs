@@ -34,14 +34,21 @@ namespace Loft.Controllers
             return View(_viewModel);
         }
 
-        public IActionResult PageEditor(int pageId, PageType pageType)
+        
+        public IActionResult PageEditor(int pageId, PageType pageType, int directoryId =0)
         {
             PageEditModel _editModel;
-            switch(pageType)
+            switch (pageType)
             {
-                case PageType.Directory: _editModel = _servicesManager.Directorys.GetDirectoryEdetModel(pageId); break;
-                case PageType.Material: _editModel = _servicesManager.Materials.GetMaterialEdetModel(pageId); break;
-                default: _editModel = null;break;
+                case PageType.Directory:
+                    if (pageId != 0) _editModel = _servicesManager.Directorys.GetDirectoryEdetModel(pageId);
+                    else _editModel = _servicesManager.Directorys.CreateNewDirectoryEditModel();
+                    break;
+                case PageType.Material:
+                    if (pageId != 0) _editModel = _servicesManager.Materials.GetMaterialEdetModel(pageId);
+                    else _editModel = _servicesManager.Materials.CreateNewMaterialEditModel(directoryId);
+                    break;
+                default: _editModel = null; break;
             }
             ViewBag.PageType = pageType;
             return View(_editModel);
