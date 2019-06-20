@@ -34,7 +34,7 @@ namespace Loft.Controllers
             return View(_viewModel);
         }
 
-        
+        [HttpGet]
         public IActionResult PageEditor(int pageId, PageType pageType, int directoryId =0)
         {
             PageEditModel _editModel;
@@ -52,6 +52,20 @@ namespace Loft.Controllers
             }
             ViewBag.PageType = pageType;
             return View(_editModel);
+        }
+
+        [HttpPost]
+        public IActionResult SaveDirectory(DirectoryEditModel model)
+        {
+            _servicesManager.Directorys.SaveDirectoryEditModelToDb(model);
+            return RedirectToAction("PageEditor", "Page", new { pageId = model.Id, PageType.Directory });
+        }
+
+        [HttpPost]
+        public IActionResult SaveMaterial(MaterialEditModel model)
+        {
+            _servicesManager.Materials.SaveMaterialEditModelToDb(model);
+            return RedirectToAction("PageEditor", "Page", new { pageId = model.Id, PageType.Material });
         }
     }
 }
